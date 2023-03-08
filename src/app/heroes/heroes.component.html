@@ -1,0 +1,18 @@
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let hero of heroes">
+    <button type="button" (click)="onSelect(hero)" [class.selected]="hero === selectedHero"> <!-- define onClick function, conditional class added to the html element for condition -->
+      <span class="badge">{{hero.id}}</span>
+      <span class="name">{{hero.name}}</span>
+    </button>
+  </li>
+</ul>
+
+<div *ngIf="selectedHero"> <!-- show if selectedHero is defined -->
+    <h2>{{selectedHero.name | uppercase}} Details</h2> <!-- Pipe function uppercase - custom pipe functions can be written -->
+    <div>id: {{selectedHero.id}}</div>
+    <div>
+        <label for="hero-name">Hero name: </label>
+        <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name">
+    </div>
+</div>
